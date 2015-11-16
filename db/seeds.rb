@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+name = "Project "
+
+25.times do |t|
+  Project.create(name: "#{name} ##{t}", description: "This is the description of the Project ##{t}")
+end

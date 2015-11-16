@@ -7,9 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <nav class="navbar navbar-light bg-faded">
+    <div class="container">
+      <a class="navbar-brand" href="#">TimeTracking</a>
+      <ul class="nav navbar-nav pull-right">
+        <li class="nav-item">
+          <%= link_to "Projects", projects_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "New project", new_project_path, class: "nav-link" %>
+        </li>
+      </ul>
+    </div>
+  </nav>
 <div class="container">
-  <h1 class="text-center">Time tracking tool!</h1>
+  <% flash.each do |name, msg| %>
+    <%= content_tag(:div, msg, class: "alert alert-info") %>
+  <% end %>
 
   <%= yield %>
 

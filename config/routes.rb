@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+  root 'projects#index'
+
   get '/contact' => 'site#contact'
 
-  root 'site#home'
+  resources :projects
 end
