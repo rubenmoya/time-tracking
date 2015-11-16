@@ -4,12 +4,14 @@
   <title>Timetracking</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="navbar navbar-light bg-faded">
+  <nav class="navbar navbar-dark bg-inverse">
     <div class="container">
-      <a class="navbar-brand" href="#">TimeTracking</a>
+      <%= link_to "TimeTracking", root_path, class: "navbar-brand" %>
+      
       <ul class="nav navbar-nav pull-right">
         <li class="nav-item">
           <%= link_to "Projects", projects_path, class: "nav-link" %>

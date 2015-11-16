@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :find_project, except: [:index, :new, :create]
 
   def index
-    @projects = Project.order("created_at DESC").limit(10)
+    @projects = Project.last_created_projects(10)
   end
 
   def show
