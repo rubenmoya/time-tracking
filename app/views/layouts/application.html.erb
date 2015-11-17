@@ -11,7 +11,7 @@
   <nav class="navbar navbar-dark bg-inverse">
     <div class="container">
       <%= link_to "TimeTracking", root_path, class: "navbar-brand" %>
-      
+
       <ul class="nav navbar-nav pull-right">
         <li class="nav-item">
           <%= link_to "Projects", projects_path, class: "nav-link" %>
@@ -22,16 +22,17 @@
       </ul>
     </div>
   </nav>
-<div class="container">
-  <% flash.each do |name, msg| %>
-    <%= content_tag(:div, msg, class: "alert alert-info") %>
-  <% end %>
+  
+  <div class="container">
+    <% flash.each do |name, msg| %>
+      <%= content_tag(:div, msg, class: "alert alert-info") %>
+    <% end %>
 
-  <%= yield %>
+    <%= yield %>
 
-  <hr>
-  <footer class="text-center">Ironhack - Rails Introduction</footer>
-</div>
+    <hr>
+    <footer class="text-center">Ironhack - Rails Introduction</footer>
+  </div>
 
 </body>
 </html>

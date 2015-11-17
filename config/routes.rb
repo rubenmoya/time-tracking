@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get '/contact' => 'site#contact'
 
   resources :projects
+  resources :entries
 end

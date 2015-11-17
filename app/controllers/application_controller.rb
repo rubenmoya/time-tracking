@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   private
 
   def record_not_found
+    Rails.logger.warn("Tried to access #{params} wich did not exist.")
     render "layouts/404"
   end
 end

@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  has_one :entry
+
   validates :name, presence: true
 
   def self.iron_find id
