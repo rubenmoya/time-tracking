@@ -7,7 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 name = "Project "
+entry = "Entry "
 
 25.times do |t|
-  Project.create(name: "#{name} ##{t}", description: "This is the description of the Project ##{t}")
+  project = Project.create(name: "#{name} ##{t}", description: "This is the description of the Project ##{t}")
+
+  3.times do |m|
+    project.entries.create(hours: 0, minutes: 30, comment: "Comment ##{m} in the proejct #{t}")
+  end
 end

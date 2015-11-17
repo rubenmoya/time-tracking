@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  has_one :entry
+  has_many :entries
 
   validates :name, presence: true
 
