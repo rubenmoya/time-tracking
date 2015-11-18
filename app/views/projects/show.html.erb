@@ -1,5 +1,45 @@
-<h1><%= @project.name %></h1>
-<p><%= @project.description %></p>
+<hgroup>
+  <h1><%= @project.name %></h1>
+  <h6><%= @project.description %></h6>
+</hgroup>
+<hr>
 
-<%= link_to "Edit", edit_project_path(@project), class: "btn btn-primary" %>
-<%= link_to "Delete", project_path, class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?"} %>
+<p>
+  <%= link_to new_project_entry_path(@project), class: "btn btn-success btn-sm" do %>
+    <span class="fa fa-plus"></span> New entry
+  <% end %>
+  <%= link_to edit_project_path(@project), class: "btn btn-info btn-sm" do %>
+    <span class="fa fa-edit"></span> Edit project
+  <% end %>
+  <%= link_to project_path, class: "btn btn-danger btn-sm", method: :delete, data: { confirm: "Are you sure?"} do %>
+    <span class="fa fa-trash-o"></span> Delete project
+  <% end %>
+</p>
+<div class="card-columns">
+  <% @entries.each do |entry| %>
+  <div class="card">
+    <div class="card-block">
+      <p class="card-text">
+        <%= link_to entry.comment, edit_project_entry_path(@project, entry)%>
+        <span class="pull-right">
+          <%= link_to project_entry_path(@project, entry), class: "btn btn-secondary-outline btn-xs", method: :delete, data: { confirm: "Are you sure?"} do %>
+            <span class="fa fa-trash-o"></span>
+          <% end %>
+        </span>
+      </p>
+      <p>
+        <small class="text-muted">
+          <span class="fa fa-clock-o"></span> <%= entry.hours %> Hours <%= entry.minutes %> Minutes
+        </small>
+      </p>
+      <% if entry.date.present? %>
+        <p>
+          <small class="text-muted">
+            <span class="fa fa-calendar-o"></span> <%= entry.date.strftime("%d %B %Y") %>
+          </small>
+        </p>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>

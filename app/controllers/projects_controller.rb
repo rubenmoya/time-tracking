@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @entries = @project.entries
   end
 
   def new
@@ -16,9 +17,9 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
-      redirect_to @project, notice: 'Project was successfully created.'
+      redirect_to @project, :flash => { :success => "Project has been created" }
     else
-      render 'new'
+      render 'new', :flash => { :danger => "Project has not been created" }
     end
   end
 
@@ -27,9 +28,9 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to @project, notice: 'Project was successfully updated.'
+      redirect_to @project, :flash => { :success => "Project has been updated" }
     else
-      render 'edit'
+      render 'edit', :flash => { :danger => "Project has not been updated" }
     end
   end
 

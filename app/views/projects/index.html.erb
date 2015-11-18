@@ -2,13 +2,16 @@
   <% @projects.each do |project| %>
   <div class="card">
     <div class="card-block">
-      <h4 class="card-title"><%= link_to project.name, project%></h4>
+      <h4 class="card-title"><%= link_to project.name, project_path(project) %></h4>
       <% if project.description.present? %>
         <p class="card-text"><%= project.description %></p>
       <% end %>
     </div>
     <div class="card-footer text-muted small">
       <span class="fa fa-clock-o"></span> <%= time_ago_in_words(project.created_at) %> ago
+      <div class="pull-right">
+        <span class="fa fa-sticky-note-o"></span> <%= pluralize(project.entries.count, "entry") %>
+      </div>
     </div>
   </div>
   <% end %>

@@ -1,0 +1,38 @@
+<% if @entry.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <b><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</b>
+    <ul>
+    <% @entry.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for [@project, @entry] do |f| %>
+
+  <div class="form-group">
+    <%= f.label :hours %>
+    <%= f.number_field :hours, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :minutes %>
+    <%= f.number_field :minutes, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :comment %>
+    <%= f.text_area :comment, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :date %>
+    <%= f.date_field :date, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-primary btn-block" %>
+    <%= link_to "Cancel", :back, class: "btn btn-danger btn-block" %>
+  </div>
+<% end %>
